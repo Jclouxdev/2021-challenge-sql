@@ -38,9 +38,9 @@ VALUES (
   'Doe', --LastName
   'John', --FirstName
   'IT Developer', --Title
-  'His superior is Michael Mithell 6', --ReportsTo
-  '03-18-1999 00:00:00', --BirthDate
-  '03-18-2020 00:00:00', --HireDate
+  '6', --ReportsTo
+  '1999-03-18 00:00:00', --BirthDate
+  '2020-03-18 00:00:00', --HireDate
   '142 rue Sainte-Catherine', --Address
   'Bordeaux', --City
   'NA', --State
