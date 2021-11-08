@@ -1,1 +1,1 @@
-SELECT FirstName, FirstName, Title FROM employees;
+SELECT FirstName, LastName, Title FROM employees;
