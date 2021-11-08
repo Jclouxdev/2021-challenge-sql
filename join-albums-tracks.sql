@@ -1,5 +1,6 @@
-SELECT Title AS AlbumName, Name AS TrackName, Milliseconds
-FROM albums
-LEFT JOIN tracks ON albums.AlbumId = tracks.AlbumId
-ORDER BY Milliseconds ASC
-LIMIT 50;
+SELECT DISTINCT tracks.Name AS TrackName, playlists.Name AS PlaylistName
+FROM tracks
+INNER JOIN playlist_track ON tracks.TrackId = playlist_track.TrackId
+INNER JOIN playlists ON playlist_track.PlaylistId = playlists.PlaylistId
+WHERE playlists.Name = 'TV Shows'
+LIMIT 100;
