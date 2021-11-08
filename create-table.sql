@@ -7,7 +7,7 @@
 -- City with type VARCHAR(50) / not nullable
 
 CREATE TABLE students (
-  StudentId INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  StudentId INTEGER PRIMARY KEY NOT NULL,
   FirstName VARCHAR(80) NOT NULL,
   LastName VARCHAR(80) NOT NULL,
   Birthday DATE NOT NULL,
