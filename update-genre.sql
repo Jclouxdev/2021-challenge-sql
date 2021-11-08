@@ -2,5 +2,5 @@
 -- You must make the request.
 
 UPDATE genres
-SET Name = 'Rap'
-WHERE 'GenreId' = 17;
+SET Name= 'Rap'
+WHERE "GenreId" = 17
