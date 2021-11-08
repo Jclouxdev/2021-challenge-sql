@@ -148,3 +148,63 @@ VALUES
 ('7', '10'),
 ('8', '10')
 ;
+
+-- =========== Exo 2 =============
+
+-- 1) Afficher teacher
+SELECT * FROM teacher;
+
+-- 2)  Ecrire une requête qui permet de modifier la date de naissance de l’étudiant Blot Matthieu, la date de naissance correcte est « 1997-03- 25 »
+UPDATE student
+SET birthDate = '1997-03- 25'
+WHERE "idStudent" = 8;
+
+-- 3) L’enseignant Merle n’enseigne plus les b1 info, faites la mise à jour nécessaire dans la table enseignements
+DELETE FROM education
+WHERE idFormation = '1' AND idTeacher = '7';
+
+-- 4) L’école décide de supprimer tous les niveaux de la formation Animation faites des requêtes pour mettre à jour les tables concernées.
+DELETE FROM formation
+WHERE lastname = 'ANIMATION';
+
+DELETE FROM education
+WHERE idFormation = '10' OR idFormation = '11' OR idFormation = '12';
+
+DELETE FROM student
+WHERE idFormation = '10' OR idFormation = '11' OR idFormation = '12';
+
+-- 5) Ecrire une requête qui permet d’afficher tous les étudiants qui ont un nom qui contient la lettre ‘b’
+SELECT * FROM student
+WHERE lastname LIKE '%b%' OR lastname LIKE '%b';
+
+-- 6) Ecrire une requête qui permet d’afficher les 3 plus jeunes étudiants.
+SELECT * FROM student
+ORDER BY birthDate DESC
+LIMIT 3;
+
+-- 7) Ecrire une requête qui permet d’afficher tous les étudiants qui sont en b1 et en b2.
+SELECT * FROM student
+WHERE idFormation = '1' 
+OR idFormation = '2' 
+OR idFormation = '4' 
+OR idFormation = '5'
+OR idFormation = '7'
+OR idFormation = '8'
+OR idFormation = '13'
+OR idFormation = '14';
+
+-- 8) Ecrire une requête qui permet d’afficher (avec un alias phrase) des phrases sous la forme suivante :
+-- Mr (nom enseignant) enseigne la formation (nom de formation) ou se trouve l’étudiant (nom étudiant).
+SELECT 'Mr ' || teacher.lastname || 'enseigne la formation ' || formation.lastname || " ou se trouve l'étudiant " || student.lastname AS phrase
+FROM teacher
+INNER JOIN education ON teacher.idTeacher = education.idTeacher
+INNER JOIN formation ON education.idFormation = formation.idFormation
+INNER JOIN student ON formation.idFormation = student.idFormation;
+
+-- 9) Ecrire une requête qui permet d’afficher le nombre de formations au niveau B3, avec un alias nbFormationsB3
+SELECT COUNT(*) AS nbFormationsB3 FROM formation WHERE level = 'B3';
+
+-- 10) Ecrire une requête qui permet d’afficher le nom et prénom et l’Age de chaque étudiant.
+SELECT lastname, firstname, (2021 - birthDate) AS Age FROM student;
+
+-- 11) Ecrire une requête qui permet d’afficher en plus du lastname et firstname de l’étudiant une nouvelle case ou on indique s’il est concerné par le stage ou pas, la case est nommée stage.
