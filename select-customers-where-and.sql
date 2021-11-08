@@ -1,2 +1,2 @@
 SELECT Firstname, Lastname FROM customers
-WHERE state = 'NA' AND SupportRepId = '3';
+WHERE country = 'USA' AND SupportRepId = '3';
