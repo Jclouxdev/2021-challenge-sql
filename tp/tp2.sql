@@ -1,13 +1,13 @@
--- Créer la table formation
+-- 1) Créer la table formation
 CREATE TABLE formation (
 	idFormation INTEGER PRIMARY KEY NOT NULL,
 	lastname VARCHAR(50) NOT NULL
 );
 
--- Ajouter une colonne level a la table formation
+-- 2) Ajouter une colonne level a la table formation
 ALTER TABLE formation ADD level VARCHAR(50);
 
--- Insérer l'ensemble de formations dans le tableau
+-- 3) Insérer l'ensemble de formations dans le tableau
 INSERT INTO formation (
   lastname,
   level
@@ -30,7 +30,7 @@ VALUES
 ('CREATION ET DESIGN', 'B3')
 ;
 
--- Créer la table student
+-- 4) Créer la table student
 CREATE TABLE student (
 	idStudent INTEGER PRIMARY KEY NOT NULL,
 	lastname VARCHAR(50) NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE student (
 	idFormation REFERENCES formation(idFormation)
 );
 
--- Insérer la liste d'étudiants
+-- 5) Insérer la liste d'étudiants
 INSERT INTO student (
   firstname,
   lastname,
@@ -69,7 +69,7 @@ VALUES
 ('Alex-Aurore', 'Lejeune', '1999-05-03', '3')
 ;
 
--- Ecrire une requête qui permet d’ajouter l’étudiante Laurent Caroline qui est née le 2000-07-16 et qui est en B2 informatique à la table student
+-- 6) Ecrire une requête qui permet d’ajouter l’étudiante Laurent Caroline qui est née le 2000-07-16 et qui est en B2 informatique à la table student
 INSERT INTO student (
   firstname,
   lastname,
@@ -84,7 +84,7 @@ VALUES
   '2'
 );
 
--- Créer la table teacher
+-- 7) Créer la table teacher
 CREATE TABLE teacher (
 	idTeacher INTEGER PRIMARY KEY NOT NULL,
 	lastname VARCHAR(50) NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE teacher (
 	birthDate DATE NOT NULL
 );
 
--- Insérer la liste des enseignants qui se trouve dans le fichier liste_enseignants.txt
+-- 8) Insérer la liste des enseignants qui se trouve dans le fichier liste_enseignants.txt
 INSERT INTO teacher (
   firstname,
   lastname,
@@ -111,13 +111,13 @@ VALUES
 ('Camille', 'Le Blin', '1990-03-09')
 ;
 
--- Créer la table education
+-- 9) Créer la table education
 CREATE TABLE education (
   idFormation REFERENCES formation(idFormation),
   idTeacher REFERENCES teacher(idTeacher)
 );
 
--- Remplissez la table education 
+-- 10) Remplissez la table education 
 INSERT INTO education (
   idFormation,
   idTeacher
@@ -208,3 +208,23 @@ SELECT COUNT(*) AS nbFormationsB3 FROM formation WHERE level = 'B3';
 SELECT lastname, firstname, (2021 - birthDate) AS Age FROM student;
 
 -- 11) Ecrire une requête qui permet d’afficher en plus du lastname et firstname de l’étudiant une nouvelle case ou on indique s’il est concerné par le stage ou pas, la case est nommée stage.
+SELECT lastname, firstname,
+	CASE 
+		WHEN idStudent = '3' THEN 'Oui'
+		WHEN idStudent = '6' THEN 'Oui'
+		WHEN idStudent = '9' THEN 'Oui'
+		WHEN idStudent = '15' THEN 'Oui'
+		ELSE 'Non'
+	END stage
+FROM student;
+
+-- 12) En utilisant une sous-requête, Supprimez tous les étudiants qui sont en ‘Audiovisuel’.
+DELETE
+FROM student
+WHERE idFormation IN (
+	SELECT idFormation
+	FROM student
+	WHERE idFormation = '7'
+	OR idFormation = '8'
+	OR idFormation = '9'
+)
