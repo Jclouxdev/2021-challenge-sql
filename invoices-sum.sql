@@ -4,4 +4,4 @@
 
 SELECT SUM("Total") AllInvoicesTotalPrice 
 FROM invoices
-WHERE CustomerId = 19;
+WHERE CustomerId = 19
