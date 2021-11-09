@@ -1,9 +1,9 @@
 # SQL Ytracks Repository
 
-## What is here ?
+## What is in here ?
 
-You will find here all my files from the exercices. 
-> Feel free to look at them (low rate of comment).
+You will find all my exercise files.
+> Feel free to look at them (few comment).
 
 <a href="https://ytrack.learn.ynov.com/intra/bordeaux/2122-challenge-sql">Liens vers Ytrack</a>
 
