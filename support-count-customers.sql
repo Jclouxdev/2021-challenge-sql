@@ -1,6 +1,6 @@
 SELECT
-	employees.FirstName || " " || UPPER(employees.LastName) AS FullName,
-	COUNT(customers.CustomerId) AS "NumberOfCustomers"
+	employees.FirstName || " " || UPPER(employees.LastName) FullName,
+	COUNT(customers.CustomerId) NumberOfCustomers
 FROM
 	customers
 	INNER JOIN employees ON customers.SupportRepId = employees.EmployeeId
