@@ -5,3 +5,4 @@ CASE
 	WHEN Total > 10 THEN 'Price greater than 10$'
 END 'CASE'
 FROM invoices
+LIMIT 100
