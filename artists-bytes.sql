@@ -1,4 +1,4 @@
-select artists.Name as ArtistName, albums.Title as AlbumName, tracks.Name as TrackName, round(tracks.Bytes/1000000.0, 2) as MegaBytes
+select artists.Name as ArtistName, albums.Title as AlbumName, tracks.Name as TrackName, round(tracks.Bytes/1000000.0, 2) || ' MB' as MegaBytes
 from albums
 inner join tracks on albums.AlbumId = tracks.AlbumId
 inner join artists on albums.ArtistId = artists.ArtistId
