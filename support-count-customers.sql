@@ -9,4 +9,4 @@ WHERE
 GROUP BY
 	customers.SupportRepId
 ORDER BY
-	NumberOfCustomers
+	"NumberOfCustomers"
