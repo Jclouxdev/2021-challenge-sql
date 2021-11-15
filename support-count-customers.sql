@@ -7,6 +7,6 @@ FROM
 WHERE
 	employees.Title = "Sales Support Agent"
 GROUP BY
-	customers.SupportRepId
+	customers.EmployeeId
 ORDER BY
-	"NumberOfCustomers"
+	NumberOfCustomers
