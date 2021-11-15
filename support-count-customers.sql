@@ -1,5 +1,5 @@
 SELECT
-	employees.FirstName || " " || UPPER(employees.LastName) as FullName,
+	employees.FirstName || ' ' || UPPER(employees.LastName) as FullName,
 	COUNT(customers.CustomerId) as NumberOfCustomers
 FROM
 	customers
