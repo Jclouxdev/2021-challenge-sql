@@ -7,3 +7,4 @@ select artists.Name, count(albums.ArtistId) NbAlbums,
 from artists
 inner join albums on artists.ArtistId = albums.ArtistId
 group by albums.ArtistId
+limit 100
