@@ -1,5 +1,4 @@
-select *
-from tracks
+delete from tracks
 where tracks.AlbumId in (
 	SELECT albums.AlbumId
 	from albums
